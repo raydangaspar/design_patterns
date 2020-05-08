@@ -39,8 +39,21 @@ class TemplateDeImpostoCondicional(Imposto):
         pass
 
 
+# chama o cálculo do imposto do ISS, pega o resultado e soma com R$50,00
+def IPVX(metodo_ou_funcao):
+    # empacotador
+    # self é o self do método que estou decorando
+    def wrapper(self, orcamento):
+        return metodo_ou_funcao(self, orcamento) + 50.0 # metodo_ou_funcao é o calcula
+    return wrapper
+
+
 class ISS(Imposto):
 
+    # decorando o método calcula com IPVX, ou seja, toda vez que calcula for chamado
+    # deve somar 50,00 no resultado
+    # executa o IPVX, e o calcula é executado dentro do IPVX
+    @IPVX
     def calcula(self, orcamento):
         return orcamento.valor * 0.1 + self.calculo_do_outro_imposto(orcamento)
 
