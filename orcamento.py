@@ -4,6 +4,9 @@ from abc import ABCMeta, abstractmethod
 class EstadoDeUmOrcamento(object):
     __metaclass__ = ABCMeta
 
+    def __init__(self):
+        self.desconto_aplicado = False
+
     @abstractmethod
     def aplica_desconto_extra(self, orcamento):
         pass
@@ -23,7 +26,11 @@ class EstadoDeUmOrcamento(object):
 
 class EmAprovacao(EstadoDeUmOrcamento):
     def aplica_desconto_extra(self, orcamento):
-        orcamento.adiciona_desconto_extra(orcamento.valor * 0.02)
+        if not self.desconto_aplicado:
+            orcamento.adiciona_desconto_extra(orcamento.valor * 0.02)
+            self.desconto_aplicado = True
+        else:
+            raise Exception('Desconto já aplicado')
 
     def aprova(self, orcamento):
         orcamento.estado_atual = Aprovado()
