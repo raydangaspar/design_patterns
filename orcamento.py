@@ -44,7 +44,11 @@ class EmAprovacao(EstadoDeUmOrcamento):
 
 class Aprovado(EstadoDeUmOrcamento):
     def aplica_desconto_extra(self, orcamento):
-        orcamento.adiciona_desconto_extra(orcamento.valor * 0.05)
+        if not self.desconto_aplicado:
+            orcamento.adiciona_desconto_extra(orcamento.valor * 0.05)
+            self.desconto_aplicado = True
+        else:
+            raise Exception('Desconto já aplicado')
 
     def aprova(self, orcamento):
         raise Exception('Orçamento já está aprovado')
