@@ -18,6 +18,7 @@ class Item:
 # para os parâmetros opcionais, nesse caso data_de_emissao e detalhes,
 # temos de passar um valor default no construtor para na chamada da classe
 # ser aceito não ser passado esses parâmetros
+# parâmetros opcionais devem ser passados como os últimos parâmetros
 class NotaFiscal:
     def __init__(self, razao_social, cnpj, itens, data_de_emissao=date.today(), detalhes=''):
         self.__razao_social = razao_social
@@ -46,6 +47,8 @@ class NotaFiscal:
 
 
 if __name__ == '__main__':
+    from criador_de_nota_fiscal import CriadorDeNotaFiscal
+
     itens = [
         Item(
             'ITEM A',
@@ -63,7 +66,14 @@ if __name__ == '__main__':
     nota_fiscal = NotaFiscal(
         razao_social='FHSA Limitada',
         cnpj='012345678901234',
-        itens=itens
-        # data_de_emissao=date.today(),
-        # detalhes=''
+        itens=itens,
+        data_de_emissao=date.today(),
+        detalhes=''
+    )
+
+    nota_fiscal_criada_com_builder = (
+        CriadorDeNotaFiscal().
+        com_razao_social('FHSA Limitada').
+        com_cnpj('012345678901234').
+        com_itens(itens).constroi()
     )
