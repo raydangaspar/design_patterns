@@ -54,10 +54,13 @@ if __name__ == '__main__':
         )
     ]
 
+    # para evitar que os argumentos possam ser passados fora de ordem,
+    # podemos usar parâmetros nomeados
+    # posso inverter a ordem com parâmetros nomeados
     nota_fiscal = NotaFiscal(
-        'FHSA Limitada',
-        '012345678901234',
-        itens,
-        date.today(),
-        ''
+        razao_social='FHSA Limitada',
+        cnpj='012345678901234',
+        itens=itens,
+        data_de_emissao=date.today(),
+        detalhes=''
     )
