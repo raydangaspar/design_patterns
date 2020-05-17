@@ -41,6 +41,23 @@ class NotaFiscal:
     def detalhes(self):
         return self.__detalhes
 
-    @property
-    def itens(self):
-        return self.__itens
+
+if __name__ == '__main__':
+    itens = [
+        Item(
+            'ITEM A',
+            100
+        ),
+        Item(
+            'ITEM B',
+            200
+        )
+    ]
+
+    nota_fiscal = NotaFiscal(
+        'FHSA Limitada',
+        '012345678901234',
+        itens,
+        date.today(),
+        ''
+    )
