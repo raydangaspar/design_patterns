@@ -1,7 +1,7 @@
 from descontos import DescontoPorCincoItens, DescontoPorMaisDeQuinhentosReais, SemDesconto
 
 
-class CalculadorDeDescontos(object):
+class CalculadorDeDescontos:
 
     def calcula(self, orcamento):
         desconto = DescontoPorCincoItens(

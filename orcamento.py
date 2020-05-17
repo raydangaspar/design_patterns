@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 
 
-class EstadoDeUmOrcamento(object):
+class EstadoDeUmOrcamento:
     __metaclass__ = ABCMeta
 
     def __init__(self):
@@ -88,7 +88,7 @@ class Finalizado(EstadoDeUmOrcamento):
         raise Exception('Orçamentos finalizados não podem ser finalizados novamente')
 
 
-class Orcamento(object):
+class Orcamento:
 
     def __init__(self):
         self.__itens = []
@@ -128,7 +128,7 @@ class Orcamento(object):
         self.__itens.append(item)
 
 
-class Item(object):
+class Item:
 
     def __init__(self, nome, valor):
         self.__nome = nome

@@ -2,7 +2,7 @@
 from impostos import ICMS, ISS, ICPP, IKCV
 
 
-class CalculadorDeImpostos(object):
+class CalculadorDeImpostos:
 
     def realiza_calculo(self, orcamento, imposto):
         imposto_calculado = imposto.calcula(orcamento)

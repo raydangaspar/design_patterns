@@ -10,7 +10,7 @@ class DescontoPorCincoItens(object):
             return self.__proximo_desconto.calcula(orcamento)
 
 
-class DescontoPorMaisDeQuinhentosReais(object):
+class DescontoPorMaisDeQuinhentosReais:
 
     def __init__(self, proximo_desconto):
         self.__proximo_desconto = proximo_desconto
@@ -22,7 +22,7 @@ class DescontoPorMaisDeQuinhentosReais(object):
             return self.__proximo_desconto.calcula(orcamento)
 
 
-class SemDesconto(object):
+class SemDesconto:
 
     def calcula(self, orcamento):
         return 0

@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 
 
-class Imposto(object):
+class Imposto:
 
     def __init__(self, outro_imposto = None):
         self.__outro_imposto = outro_imposto
